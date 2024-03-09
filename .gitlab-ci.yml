@@ -6,7 +6,6 @@ build docker image:
   image: docker
   tags:
     - aarch64
-    - x86_64
   services: 
     - docker:dind
   script: 
