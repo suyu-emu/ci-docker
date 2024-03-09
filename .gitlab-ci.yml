@@ -4,8 +4,6 @@ stages:
 build docker image:
   stage: build
   image: docker
-  tags:
-    - aarch64
   services: 
     - docker:dind
   script: 
