@@ -71,7 +71,7 @@ cd boost-src/
 echo " -- Bootstrapping Boost (no output due to Wine workarounds)"
 xvfb-run wineconsole ./bootstrap.bat clang &> /dev/null
 echo " -- Compiling boost"
-wine ./b2.exe -j$(min $(nproc) 2) --with-context install # Limiting to 4 to avoid "Too many open files"
+wine ./b2.exe -j1 --with-context install # Limiting to 2 to avoid "Too many open files"
 echo " -- Deleting boost sources"
 cd ../
 rm -rf boost-src
