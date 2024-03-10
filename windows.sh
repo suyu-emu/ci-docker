@@ -66,9 +66,9 @@ echo " -- Downloading Boost"
 wget -q https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0.zip
 unzip -q *.zip
 rm *.zip
-mv boost_* boost
-cd boost
+mv boost_* boost-src
+cd boost-src
 echo " -- Bootstrapping Boost (no output due to Wine workarounds)"
 xvfb-run wineconsole ./bootstrap.bat clang &> /dev/null
 echo " -- Compiling boost"
-wine ./b2.exe -j$(min $(nproc) 4) context # Limiting to 4 to avoid "Too many open files"
+wine ./b2.exe -j$(min $(nproc) 2) --with-context install # Limiting to 4 to avoid "Too many open files"
