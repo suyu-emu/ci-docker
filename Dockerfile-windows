@@ -1,11 +1,11 @@
 FROM debian:trixie
 RUN apt-get update --yes \
-    && apt-get install wget \
+    && apt-get -y install wget \
     && dpkg --add-architecture i386 \
     && mkdir -pm755 /etc/apt/keyrings \
     && wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
     && wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/trixie/winehq-trixie.sources \
     && apt-get update \
-    && apt-get install winehq-stable \
+    && apt-get -y install winehq-stable \
     && apt-get clean \
     && wine winecfg
