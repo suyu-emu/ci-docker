@@ -1,11 +1,16 @@
 FROM debian:trixie
+COPY windows.sh /tmp/setup.sh
+COPY windows.reg /tmp/setup.reg
 RUN apt-get update --yes \
-    && apt-get -y install wget \
+    && apt-get -y install wget unzip xvfb \
     && dpkg --add-architecture i386 \
     && mkdir -pm755 /etc/apt/keyrings \
     && wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
     && wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/trixie/winehq-trixie.sources \
     && apt-get update \
-    && apt-get -y install winehq-stable \
+    && apt-get -y install winehq-devel \
     && apt-get clean \
-    && wine winecfg
+    && export WINEDEBUG=-all \
+    && wine winecfg \
+    && /tmp/setup.sh \
+    && wineserver -k
