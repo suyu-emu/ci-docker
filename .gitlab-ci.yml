@@ -18,5 +18,5 @@ build windows x64:
     - docker:dind
   script: 
     - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
-    - docker build -f Dockerfile-windows -t ${CI_REGISTRY_IMAGE}:linux-x86 .
-    - docker push ${CI_REGISTRY_IMAGE}:linux-x86
+    - docker build -f Dockerfile-windows -t ${CI_REGISTRY_IMAGE}:windows-x86 .
+    - docker push ${CI_REGISTRY_IMAGE}:windows-x86
