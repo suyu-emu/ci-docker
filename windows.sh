@@ -13,9 +13,8 @@ function min {
 setsid wineserver -p -f &
 
 # Increase open file limit
-echo " --- Increasing max. open file limit"
-ulimit -n 5120
-
+echo " --- Trying to increase max. open file limit"
+ulimit -n 5120 || (exit 0)
 
 # Install tools
 echo " --- Installing tools"
