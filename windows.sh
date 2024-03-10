@@ -67,8 +67,37 @@ wget -q https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1
 unzip -q *.zip
 rm *.zip
 mv boost_* boost-src
-cd boost-src
+cd boost-src/
 echo " -- Bootstrapping Boost (no output due to Wine workarounds)"
 xvfb-run wineconsole ./bootstrap.bat clang &> /dev/null
 echo " -- Compiling boost"
 wine ./b2.exe -j$(min $(nproc) 2) --with-context install # Limiting to 4 to avoid "Too many open files"
+echo " -- Deleting boost sources"
+cd ../
+rm -rf boost-src
+
+# Download and compile fmt
+echo " -- Downloading fmt"
+wget -q -Ofmt.zip https://github.com/fmtlib/fmt/archive/refs/tags/10.2.1.zip
+unzip -q *.zip
+rm *.zip
+mv fmt-* fmt-src
+cd fmt-src/
+echo " -- Configuring fmt"
+mkdir build
+cd build/
+wine cmake.exe .. -G Ninja
+echo " -- Compiling fmt"
+wine ninja.exe install
+echo " -- Deleting fmt sources"
+cd ../../
+rm -rf fmt-src
+
+# Download LZ4
+echo " -- Downloading LZ4"
+wget -q https://github.com/lz4/lz4/releases/download/v1.9.4/lz4_win64_v1_9_4.zip
+mkdir lz4
+pushd lz4/ > /dev/null
+unzip -q ../lz4_win64_*.zip
+popd > /dev/null
+rm *.zip
