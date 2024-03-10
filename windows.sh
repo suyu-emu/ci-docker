@@ -71,4 +71,4 @@ cd boost
 echo " -- Bootstrapping Boost (no output due to Wine workarounds)"
 xvfb-run wineconsole ./bootstrap.bat clang &> /dev/null
 echo " -- Compiling boost"
-wine ./b2.exe -j$(min $(nproc) 4) core context # Limiting to 2 to avoid "Too many open files"
+wine ./b2.exe -j$(min $(nproc) 4) context # Limiting to 4 to avoid "Too many open files"
