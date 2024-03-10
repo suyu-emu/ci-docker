@@ -18,5 +18,5 @@ build windows x64:
     - docker:dind
   script: 
     - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
-    - docker build -f Dockerfile-windows -t ${CI_REGISTRY_IMAGE}:windows-x64 .
+    - docker build --ulimit nofile=5000:5000 -f Dockerfile-windows -t ${CI_REGISTRY_IMAGE}:windows-x64 .
     - docker push ${CI_REGISTRY_IMAGE}:windows-x64

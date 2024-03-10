@@ -12,6 +12,11 @@ function min {
 # Leave wineserver running in the background
 setsid wineserver -p -f &
 
+# Increase open file limit
+echo " --- Increasing max. open file limit"
+ulimit -n 5120
+
+
 # Install tools
 echo " --- Installing tools"
 cd ~/.wine/drive_c/Program\ Files/
