@@ -1,9 +1,9 @@
 FROM debian:trixie
 RUN apt-get update --yes \
-    && sudo dpkg --add-architecture i386 \
-    && sudo mkdir -pm755 /etc/apt/keyrings \
-    && sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
-    && sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/trixie/winehq-trixie.sources \
-    && sudo apt-get update \
-    && sudo apt-get install winehq-stable \
+    && dpkg --add-architecture i386 \
+    && mkdir -pm755 /etc/apt/keyrings \
+    && wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
+    && wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/trixie/winehq-trixie.sources \
+    && apt-get update \
+    && apt-get install winehq-stable \
     && apt-get clean
