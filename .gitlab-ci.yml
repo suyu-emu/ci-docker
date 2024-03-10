@@ -1,12 +1,22 @@
 stages:
   - build
 
-build docker image:
+build linux x64:
   stage: build
   image: docker
   services: 
     - docker:dind
   script: 
     - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
-    - docker build -t $CI_REGISTRY_IMAGE .
-    - docker push $CI_REGISTRY_IMAGE
+    - docker build -f Dockerfile-linux -t ${CI_REGISTRY_IMAGE}:linux-x86 .
+    - docker push ${CI_REGISTRY_IMAGE}:linux-x86
+
+build windows x64:
+  stage: build
+  image: docker
+  services: 
+    - docker:dind
+  script: 
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    - docker build -f Dockerfile-windows -t ${CI_REGISTRY_IMAGE}:linux-x86 .
+    - docker push ${CI_REGISTRY_IMAGE}:linux-x86
