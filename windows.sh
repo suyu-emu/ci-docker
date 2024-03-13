@@ -40,11 +40,12 @@ popd > /dev/null
 rm *.zip
 
 # Install LLVM toolchain
-echo " -- Installing LLVM toolchain"
-wget -q https://github.com/mstorsjo/llvm-mingw/releases/download/20240308/llvm-mingw-20240308-msvcrt-x86_64.zip
-unzip -q *.zip
-rm *.zip
-mv llvm-mingw-*-x86_64 llvm
+#echo " -- Installing LLVM toolchain"
+#wget -q https://github.com/mstorsjo/llvm-mingw/releases/download/20240308/llvm-mingw-20240308-msvcrt-x86_64.zip
+#unzip -q *.zip
+#rm *.zip
+#mv llvm-mingw-*-x86_64 llvm
+#ln -sf "$(pwd)"/llvm/bin/ld.lld llvm/bin/ld
 
 # Install registry file
 echo " -- Updating PATH environment variable"
@@ -56,7 +57,7 @@ echo " -- Tools installed:"
 echo -n " - " ; wine cmake.exe --version | head -1
 echo -n " - " ; wine ccache.exe --version | head -1
 echo -n " - Ninja " ; wine ninja.exe --version
-echo -n " - " ; wine clang.exe --version | head -1
+#echo -n " - " ; wine clang.exe --version | head -1
 
 # Unpack out-of-tree dependencies
 echo " --- Unpacking out-of-tree dependencies"
