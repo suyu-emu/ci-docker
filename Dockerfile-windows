@@ -3,7 +3,7 @@ COPY windows.sh /tmp/setup.sh
 COPY windows.reg /tmp/setup.reg
 COPY windows-libs.7z /tmp/windows-libs.7z
 RUN apt-get update --yes \
-    && apt-get -y install wget unzip p7zip xvfb \
+    && apt-get -y install git wget unzip p7zip xvfb \
     && dpkg --add-architecture i386 \
     && mkdir -pm755 /etc/apt/keyrings \
     && wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
