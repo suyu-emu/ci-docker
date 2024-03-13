@@ -39,14 +39,6 @@ unzip -q ../ninja-win.zip
 popd > /dev/null
 rm *.zip
 
-# Install LLVM toolchain
-#echo " -- Installing LLVM toolchain"
-#wget -q https://github.com/mstorsjo/llvm-mingw/releases/download/20240308/llvm-mingw-20240308-msvcrt-x86_64.zip
-#unzip -q *.zip
-#rm *.zip
-#mv llvm-mingw-*-x86_64 llvm
-#ln -sf "$(pwd)"/llvm/bin/ld.lld llvm/bin/ld
-
 # Install registry file
 echo " -- Updating PATH environment variable"
 wine regedit 'Z:\tmp\setup.reg'
