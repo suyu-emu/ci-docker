@@ -1,0 +1,7 @@
+250,251c250,251
+<     ThreadEngineStarter<void>(ThreadEngine<void> *_threadEngine)
+<     :ThreadEngineStarterBase<void>(_threadEngine) {}
+---
+>     ThreadEngineStarter(ThreadEngine<void> *_threadEngine)
+>         : ThreadEngineStarterBase<void>(_threadEngine) {}
+
