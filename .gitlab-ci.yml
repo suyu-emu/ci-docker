@@ -11,6 +11,16 @@ build linux x64:
     - docker build -f Dockerfile-linux -t ${CI_REGISTRY_IMAGE}:linux-x64 .
     - docker push ${CI_REGISTRY_IMAGE}:linux-x64
 
+build android x64:
+  stage: build
+  image: docker
+  services: 
+    - docker:dind
+  script: 
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    - docker build -f Dockerfile-android -t ${CI_REGISTRY_IMAGE}:android-x64 .
+    - docker push ${CI_REGISTRY_IMAGE}:android-x64
+
 build windows x64:
   stage: build
   image: docker
