@@ -112,10 +112,10 @@ RUN cd /tmp && \
 # Install GCC from suyu-emu/ext-linux-bin
 RUN cd /tmp && \
     wget --no-verbose \
-        https://github.com/suyu-emu/ext-linux-bin/raw/main/gcc/gcc-${GCC_VER}-ubuntu.tar.xz.aa \
-        https://github.com/suyu-emu/ext-linux-bin/raw/main/gcc/gcc-${GCC_VER}-ubuntu.tar.xz.ab \
-        https://github.com/suyu-emu/ext-linux-bin/raw/main/gcc/gcc-${GCC_VER}-ubuntu.tar.xz.ac \
-        https://github.com/suyu-emu/ext-linux-bin/raw/main/gcc/gcc-${GCC_VER}-ubuntu.tar.xz.ad && \
+        https://gitlab.com/suyu-emu/ext-linux-bin/raw/main/gcc/gcc-${GCC_VER}-ubuntu.tar.xz.aa \
+        https://gitlab.com/suyu-emu/ext-linux-bin/raw/main/gcc/gcc-${GCC_VER}-ubuntu.tar.xz.ab \
+        https://gitlab.com/suyu-emu/ext-linux-bin/raw/main/gcc/gcc-${GCC_VER}-ubuntu.tar.xz.ac \
+        https://gitlab.com/suyu-emu/ext-linux-bin/raw/main/gcc/gcc-${GCC_VER}-ubuntu.tar.xz.ad && \
     cat gcc-${GCC_VER}-ubuntu.tar.xz.* | tar xJ && \
     cp -rv gcc-${GCC_VER}/usr / && \
     rm -rf /tmp/gcc* && \
@@ -131,7 +131,7 @@ RUN cd /tmp && \
 # Install GNU binutils from suyu-emu/ext-linux-bin
 RUN cd /tmp && \
     wget --no-verbose \
-        https://github.com/suyu-emu/ext-linux-bin/raw/main/binutils/binutils-${GNU_BIN_VER}-${UBUNTU_VER}.tar.xz && \
+        https://gitlab.com/suyu-emu/ext-linux-bin/raw/main/binutils/binutils-${GNU_BIN_VER}-${UBUNTU_VER}.tar.xz && \
     tar xf binutils-${GNU_BIN_VER}-${UBUNTU_VER}.tar.xz && \
     cp -rv binutils-${GNU_BIN_VER}-${UBUNTU_VER}/usr / && \
     rm -rf /tmp/binutils*
